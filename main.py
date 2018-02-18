@@ -1,20 +1,16 @@
 # -*- coding: utf-8 -*-
 
-from bigone import BigOneDog
+from bigone import BigOneClient
 from common import gen_logger
 
 import logging
 import time
 
-# private key, delete when publish
-private_key = ""
-
-
 if __name__ == '__main__':
     gen_logger('bigonetest')
     logger = logging.getLogger("bigone")
 
-    dog = BigOneDog(private_key)
+    dog = BigOneClient("mama")
     while True:
 
         big_eth_data = dog.get_order_book('BIG-ETH')

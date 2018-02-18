@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-exception model of ZIEN Models
+exception zootopia of ZIEN Models
 @Author: chengli
 @Date: 2017.02.25
 """
