@@ -3,4 +3,4 @@
 .. moduleauthor:: Sam McHardy
 
 """
-from .client import BigOneDog
+from .client import BigOneClient

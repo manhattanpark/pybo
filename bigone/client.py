@@ -1,19 +1,20 @@
 # coding=utf-8
 
 import requests
+import json
 
 from uuid import uuid4
 from .exceptions import BigoneAPIException, BigoneRequestException
 
 
-class BigOneDog(object):
+class BigOneClient(object):
 
     API_URL = 'https://api.big.one'
 
     SIDE_BID = 'BID'
     SIDE_ASK = 'ASK'
 
-    def __init__(self, api_key):
+    def __init__(self, account):
 
         """Big.One API Client constructor
 
@@ -28,9 +29,16 @@ class BigOneDog(object):
 
         """
 
-        self.API_KEY = api_key
+        self.API_KEY = self._get_api_key(account)
         self.UUID = self._get_uuid()
         self.session = self._init_session()
+
+    def _get_api_key(self, account):
+        try:
+            with open("PRIVATE_KEY.json", 'r') as f:
+                return json.load(f)[account]
+        except Exception as e:
+            raise RuntimeError("get api key error, {}".format(e))
 
     def _get_uuid(self):
         return str(uuid4())
